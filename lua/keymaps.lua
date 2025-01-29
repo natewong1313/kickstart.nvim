@@ -33,3 +33,5 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Use 1 to move to front of line instead of ^
 vim.keymap.set('n', '1', '^', { noremap = true, silent = true })
+-- Ctrl s to save
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<cmd> w <cr>')
