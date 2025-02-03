@@ -1,5 +1,14 @@
 # kickstart.nvim
 
+## Dependencies
+* [unzip](https://formulae.brew.sh/formula/unzip)
+* [ripgrep](https://github.com/BurntSushi/ripgrep)
+* [xclip](https://linuxconfig.org/how-to-use-xclip-on-linux)
+
+## Node JS Globals
+* [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli?tab=readme-ov-file#usage)
+* [neovim/node-client](https://github.com/neovim/node-client)
+
 ## Introduction
 
 A starting point for Neovim that is:
