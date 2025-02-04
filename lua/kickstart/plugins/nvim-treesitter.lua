@@ -20,6 +20,7 @@ return { -- Highlight, edit, and navigate code
       'javascript',
       'css',
       'go',
+      'astro',
     },
     -- Autoinstall languages that are not installed
     auto_install = true,
