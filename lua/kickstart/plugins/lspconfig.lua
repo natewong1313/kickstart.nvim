@@ -176,6 +176,7 @@ return {
       ts_ls = {},
       tailwindcss = {},
       astro = {},
+      rust_analyzer = {},
       --
 
       lua_ls = {
