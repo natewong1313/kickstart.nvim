@@ -36,11 +36,6 @@ vim.keymap.set('n', '1', '^', { noremap = true, silent = true })
 -- Ctrl s to save
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<cmd> w <cr>')
 
--- <leader> e to show full error message in float
-vim.keymap.set('n', '<leader>e', function()
-  vim.diagnostic.open_float { focusable = true }
-  vim.diagnostic.open_float { focusable = true }
-end, { desc = 'Expand an Error into a float' })
 -- <Esc> to hide float
 vim.keymap.set('n', '<Esc>', function()
   for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -49,3 +44,13 @@ vim.keymap.set('n', '<Esc>', function()
     end
   end
 end, { desc = 'Close opened float window' })
+
+-- <leader>sth show type hint in a hover window
+vim.keymap.set('n', '<leader>sth', vim.lsp.buf.hover)
+
+-- vim.keymap.set('n', '<leader>sth', vim.lsp.buf.hover())
+-- <leader> e to show full error message in float
+vim.keymap.set('n', '<leader>e', function()
+  vim.diagnostic.open_float { focusable = true }
+  vim.diagnostic.open_float { focusable = true }
+end, { desc = 'Expand an Error into a float' })
