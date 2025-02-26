@@ -5,6 +5,11 @@ return { -- You can easily change to a different colorscheme.
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
   'folke/tokyonight.nvim',
   priority = 1000, -- Make sure to load this before all the other start plugins.
+  config = function()
+    require('tokyonight').setup {
+      transparent = false,
+    }
+  end,
   init = function()
     -- Load the colorscheme here.
     -- Like many other themes, this one has different styles, and you could load
