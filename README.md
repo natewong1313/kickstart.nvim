@@ -8,6 +8,8 @@
 ## Node JS Globals
 * [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli?tab=readme-ov-file#usage)
 * [neovim/node-client](https://github.com/neovim/node-client)
+## Pip 
+```pip3 install neovim```
 
 ## Introduction
 

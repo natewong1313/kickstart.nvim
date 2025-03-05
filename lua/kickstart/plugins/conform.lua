@@ -39,6 +39,7 @@ return { -- Autoformat
       javascript = { 'prettierd' },
       typescript = { 'prettierd' },
       typescriptreact = { 'prettierd' },
+      python = { 'ruff_format' },
     },
   },
 }

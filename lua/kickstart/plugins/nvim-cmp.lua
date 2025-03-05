@@ -33,17 +33,44 @@ return { -- Autocompletion
     --  into multiple repos for maintenance purposes.
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
+    'xzbdmw/colorful-menu.nvim',
+    'onsails/lspkind.nvim',
   },
   config = function()
     -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
+    local lspkind = require 'lspkind'
     luasnip.config.setup {}
 
     cmp.setup {
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
+        end,
+      },
+      formatting = {
+        fields = { 'kind', 'abbr', 'menu' },
+        format = function(entry, vim_item)
+          local kind = require('lspkind').cmp_format {
+            mode = 'symbol_text',
+          }(entry, vim.deepcopy(vim_item))
+
+          local highlights_info = require('colorful-menu').cmp_highlights(entry)
+          -- error, such as missing parser, fallback to use raw label.
+          if highlights_info == nil then
+            vim_item.abbr = entry:get_completion_item().label
+          else
+            vim_item.abbr_hl_group = highlights_info.highlights
+            vim_item.abbr = highlights_info.text
+          end
+
+          -- This is optional, you can omit if you don't use lspkind.
+          local strings = vim.split(kind.kind, '%s', { trimempty = true })
+          vim_item.kind = ' ' .. (strings[1] or '') .. ' '
+          vim_item.menu = ''
+
+          return vim_item
         end,
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
@@ -65,13 +92,13 @@ return { -- Autocompletion
         -- Accept ([y]es) the completion.
         --  This will auto-import if your LSP supports it.
         --  This will expand snippets if the LSP sent a snippet.
-        ['<C-y>'] = cmp.mapping.confirm { select = true },
+        -- ['<C-y>'] = cmp.mapping.confirm { select = true },
 
         -- If you prefer more traditional completion keymaps,
         -- you can uncomment the following lines
-        --['<CR>'] = cmp.mapping.confirm { select = true },
-        --['<Tab>'] = cmp.mapping.select_next_item(),
-        --['<S-Tab>'] = cmp.mapping.select_prev_item(),
+        ['<CR>'] = cmp.mapping.confirm { select = true },
+        ['<Tab>'] = cmp.mapping.select_next_item(),
+        ['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
         -- Manually trigger a completion from nvim-cmp.
         --  Generally you don't need this, because nvim-cmp will display

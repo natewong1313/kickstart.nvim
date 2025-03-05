@@ -22,6 +22,7 @@ return { -- Highlight, edit, and navigate code
       'go',
       'astro',
       'rust',
+      'python',
     },
     -- Autoinstall languages that are not installed
     auto_install = true,
