@@ -7,6 +7,8 @@ return {
         disabled_filetypes = {
           'neo-tree',
         },
+        section_separators = '',
+        component_separators = '',
       },
     }
   end,
