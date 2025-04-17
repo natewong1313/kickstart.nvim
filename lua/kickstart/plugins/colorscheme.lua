@@ -1,5 +1,13 @@
+local function getHostName()
+  local f = io.popen '/bin/hostname'
+  local hostname = f:read '*a' or ''
+  f:close()
+  hostname = string.gsub(hostname, '\n$', '')
+  return hostname
+end
+
 local function checkIfLaptopClient()
-  return os.getenv 'SSH_CLIENT' ~= nil or os.getenv 'hostname' ~= nil
+  return os.getenv 'SSH_CLIENT' ~= nil or getHostName() == 'Nates-MacBook-Air.local'
 end
 
 return { -- You can easily change to a different colorscheme.
