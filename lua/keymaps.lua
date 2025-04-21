@@ -54,3 +54,7 @@ vim.keymap.set('n', '<leader>e', function()
   vim.diagnostic.open_float { focusable = true }
   vim.diagnostic.open_float { focusable = true }
 end, { desc = 'Expand an Error into a float' })
+
+vim.keymap.set('n', '<leader>ne', function()
+  vim.diagnostic.goto_next()
+end, { desc = 'Goto next error' })
