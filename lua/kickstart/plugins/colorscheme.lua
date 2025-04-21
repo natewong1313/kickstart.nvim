@@ -7,7 +7,7 @@ local function getHostName()
 end
 
 local function checkIfLaptopClient()
-  return os.getenv 'SSH_CLIENT' ~= nil or getHostName() == 'Nates-MacBook-Air.local'
+  return os.getenv 'SSH_CLIENT' ~= nil or getHostName() == 'Nates-Air'
 end
 
 return { -- You can easily change to a different colorscheme.
@@ -15,19 +15,39 @@ return { -- You can easily change to a different colorscheme.
   -- change the command in the config to whatever the name of that colorscheme is.
   --
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-  -- 'nyoom-engineering/oxocarbon.nvim',
+
+  -- 'projekt0n/github-nvim-theme',
+  -- lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  -- priority = 1000, -- make sure to load this before all the other start plugins
+  -- config = function()
+  --   require('github-theme').setup {}
+  --
+  --   vim.cmd 'colorscheme github_light'
+  -- end,
+
+  -- 'catppuccin/nvim',
+  -- lazy = false,
   -- priority = 1000,
+  -- config = function()
+  --   require('catppuccin').setup { no_bold = false }
+  -- end,
   -- init = function()
-  --   vim.opt.background = 'dark'
-  --   vim.cmd.colorscheme 'oxocarbon'
+  --   if checkIfLaptopClient() then
+  --     vim.cmd.colorscheme 'catppuccin-latte'
+  --     vim.o.background = 'light'
+  --   else
+  --     vim.cmd.colorscheme 'catppuccin'
+  --     vim.o.background = 'dark'
+  --   end
   --   vim.cmd.hi 'Comment gui=none'
   -- end,
+
   'folke/tokyonight.nvim',
   priority = 1000, -- Make sure to load this before all the other start plugins.
   config = function()
     require('tokyonight').setup {
       transparent = false,
-      day_brightness = 0.2,
+      -- day_brightness = 0.2,
       lualine_bold = true,
     }
   end,
@@ -35,11 +55,13 @@ return { -- You can easily change to a different colorscheme.
     -- Load the colorscheme here.
     -- Like many other themes, this one has different styles, and you could load
     -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-    if checkIfLaptopClient() then
-      vim.cmd.colorscheme 'tokyonight-day'
-    else
-      vim.cmd.colorscheme 'tokyonight-night'
-    end
+    -- if checkIfLaptopClient() then
+    --   vim.cmd.colorscheme 'tokyonight-day'
+    --   vim.o.background = 'light'
+    -- else
+    vim.cmd.colorscheme 'tokyonight-night'
+    vim.o.background = 'dark'
+    -- end
 
     -- You can configure highlights by doing something like:
     vim.cmd.hi 'Comment gui=none'
