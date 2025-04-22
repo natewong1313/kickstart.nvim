@@ -10,6 +10,10 @@ local function checkIfLaptopClient()
   return os.getenv 'SSH_CLIENT' ~= nil or getHostName() == 'Nates-Air'
 end
 
+local function useTransparentBackground()
+  return os.getenv 'SSH_CLIENT' == nil and getHostName() == 'iMac'
+end
+
 return { -- You can easily change to a different colorscheme.
   -- Change the name of the colorscheme plugin below, and then
   -- change the command in the config to whatever the name of that colorscheme is.
@@ -46,7 +50,7 @@ return { -- You can easily change to a different colorscheme.
   priority = 1000, -- Make sure to load this before all the other start plugins.
   config = function()
     require('tokyonight').setup {
-      transparent = false,
+      transparent = useTransparentBackground(),
       -- day_brightness = 0.2,
       lualine_bold = true,
     }
