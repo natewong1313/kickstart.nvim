@@ -45,7 +45,21 @@ return { -- You can easily change to a different colorscheme.
   --   end
   --   vim.cmd.hi 'Comment gui=none'
   -- end,
-
+  -- 'cdmill/neomodern.nvim',
+  -- lazy = false,
+  -- priority = 1000,
+  -- config = function()
+  --   require('neomodern').setup {
+  --     theme = 'iceclimber',
+  --     variant = 'dark',
+  --   }
+  --   require('neomodern').load()
+  -- end,
+  -- init = function()
+  --   vim.o.background = 'dark'
+  --   vim.cmd.hi 'Comment gui=none'
+  -- end,
+  --
   'folke/tokyonight.nvim',
   priority = 1000, -- Make sure to load this before all the other start plugins.
   config = function()
